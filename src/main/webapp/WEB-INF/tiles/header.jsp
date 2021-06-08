@@ -7,7 +7,7 @@
                     <button type="button"
                             class="btn btn-danger"
                             data-toggle="modal"
-                            data-target="#loginfrm">로그인</button>
+                            data-target="#loginmodal">로그인</button>
                     <button type="button"
                             class="btn btn-primary">회원가입</button></div>
             </header>

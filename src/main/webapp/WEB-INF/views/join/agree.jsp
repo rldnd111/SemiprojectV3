@@ -407,15 +407,8 @@ Copyright © Kakao Corp. All rights reserved.
                 </div><!-- 버튼들-->
 
                 </div>
-                
-                <script>
-        $('#okagree').click(function(){
-            if(!$('#agree1').is(':checked') ||
-                $('#agree2').is(':checked') == false) alert("동의하세요!");
-            else location.href='/join/checkme.html'; });
-            $('#noagree').click(function(){ location.href='/index.html' });
 
-    </script>
+
                 
 
                
