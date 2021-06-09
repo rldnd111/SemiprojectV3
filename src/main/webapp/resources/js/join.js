@@ -36,6 +36,59 @@ $('#cancel2btn').on('click', function () {
     location.href = '/';
 });
 
+// userid check
+$('#userid').on('blur', function () { checkuserid(); });
+$('#userid').on('focus', function () {
+    $('#uidmsg').text(' 8~16 자의 영문 소문자, 숫자와 특수기호(_) 만 사용할 수 있습니다.');
+    $('#uidmsg').attr('style','color:black')
+});
+
+// ajax check userid
+    function checkuserid() {
+        let uid = $('#userid').val();
+        if (uid == '') { // 아이디를 입력하지 않고 탭을 누른 경우
+            $('#uidmsg').text(' 8~16 자의 영문 소문자, 숫자와 특수기호(_) 만 사용할 수 있습니다.');
+            $('#uidmsg').attr('style','color:black');
+            return;
+        }
+        $.ajax({
+            url: '/join/checkuid',
+            type: 'GET',
+            data: { 'uid' : uid }
+        })
+            .done(function (data){
+                let msg = '사용불가능한 아이디입니다!!';
+                $('#uidmsg').attr('style','color:red');
+
+                if (data.trim() == '0')
+                {
+                    msg = '사용가능한 아이디 입니다!!';
+                    $('#uidmsg').attr('style','color:blue');
+                }
+                $('#uidmsg').text( msg );
+            })
+            .fail(function (xhr, status, error){
+                alert(xhr.status + '/' + error);
+            });
+    }
+
+    // check equal passwd
+    $('#repasswd').on('blur', function () {
+        if($('#passwd').val() != $('#repasswd').val() ){
+            $('#pwdmsg').text(' 비밀번호가 일치하지않습니다 ');
+            $('#pwdmsg').attr('style','color:red') // 스타일이 안먹히면 !important
+        }
+        else {
+            $('#pwdmsg').text(' 비밀번호가 일치합니다. ');
+            $('#pwdmsg').attr('style','color:blue')
+        }
+    });
+    $('#passwd').on('focus', function () {
+    $('#pwdmsg').text(' 8~16 자의 영문 소문자, 숫자와 특수기호(_) 만 사용할 수 있습니다.');
+    $('#pwdmsg').attr('style','color:black')
+});
+
+
 // joinme
 $('#joinbtn').on('click', function () {
     if($('#userid').val() == '') alert('아이디를 입력하세요');
@@ -72,6 +125,42 @@ $('#joinbtn').on('click', function () {
 $('#cancelbtn').on('click', function () { location.href = '/'; });
 
 // show zipcode
+
+$('#findzipbtn').on('click', function () {
+   $.ajax({
+       url: '/join/zipcode',
+       type: 'GET',
+       data: { dong: $('#dong').val() }
+
+   })
+       .done(function(data) {
+           // 서버로 넘어온 데이터는 JSON형식임
+           // alert(data); // object로 출력
+           let opts = "";
+           $.each(data, function () { // 행단위 반복처리
+               let zip = '';
+               $.each(this, function (k,v) { // 열단위 반복처리
+                   if (v != null) zip += v + ' ';
+               });
+               opts += '<option>' + zip + '</option>';
+           });
+           $('#addrlist').find('option').remove(); // 기존 option태그 삭제
+           $('#addrlist').append(opts); // 새로만든 option태그를 추가함
+           
+       })
+
+       .fail(function(xhr, status, error) {
+           alert(xhr.status + '/' + error);
+       });
+
+});
+
+// zipcode dong prevent enter key
+$('input[type="text"]').keydown(function () {
+    if(event.key === 13) {
+        event.preventDefault();
+    }
+});
 
 // send zipcode
 $('#sendzip').on('click',function (){

@@ -65,7 +65,7 @@
                               text-danger text-right"for="userid">아이디</label>
                 <input type="text" name="userid" id="userid"
                        class="border-danger form-control col-3">
-                <span class="col-form-label">&nbsp;8~16 자의 영문 소문자, 숫자와 특수기호(_) 만 사용할 수 있습니다. </span>
+                <span id="uidmsg" class="col-form-label">&nbsp;8~16 자의 영문 소문자, 숫자와 특수기호(_) 만 사용할 수 있습니다. </span>
             </div> <!-- 아이디 -->
 
             <div class = "form-group row">
@@ -73,7 +73,7 @@
                               text-danger text-right"for="passwd">비밀번호</label>
                 <input type="password" name="passwd" id="passwd"
                        class="border-danger form-control col-2">
-                <span class="col-form-label">&nbsp;8~16 자의 영문 소문자, 숫자와 특수기호(_) 만 사용할 수 있습니다. </span>
+                <span id="pwdmsg" class="col-form-label">&nbsp;8~16 자의 영문 소문자, 숫자와 특수기호(_) 만 사용할 수 있습니다. </span>
                 </div> <!-- 비번 -->
 
             <div class = "form-group row">
@@ -197,7 +197,7 @@
                     <input type="text" name="dong" id="dong"
                            class="form-control border-danger col-4">
                             &nbsp;&nbsp;
-                            <button type="button" class="btn btn-primary id="findzipbtn>
+                            <button type="button" class="btn btn-primary" id="findzipbtn">
                                 <i class="fas fa-search">
                                 검색하기</i></button>
                         </div>
