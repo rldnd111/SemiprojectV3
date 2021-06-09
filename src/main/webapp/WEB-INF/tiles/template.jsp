@@ -36,7 +36,7 @@
 
                     <div class="modal-header">
                     <h3>로그인</h3>
-                    <button type="button" class="btn btn-light">
+                    <button type="button" id="lgmbtn" class="btn btn-light">
                         닫기</button>
                         </div>
                     <div class="modal-body">
@@ -70,7 +70,7 @@
                     </form>
                     </div>
                     <div class="modal-footer justify-content-center">
-                    <button type="button"
+                    <button type="button" id="loginbtn"
                             class="btn btn-danger">로그인</button>
                     <button type="button"
                             class="btn btn-warning text-white">아이디 비밀번호 찾기</button>
