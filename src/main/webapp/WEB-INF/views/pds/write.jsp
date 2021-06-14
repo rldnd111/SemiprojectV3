@@ -17,7 +17,7 @@
             </div>
 
                 <div class="card card-body bg-light col-10 offset-1">
-                    <form id="boardfrm" name="boardfrm">
+                    <form id="pdsfrm" name="pdsfrm" enctype="multipart/form-data">
 
 
                             <div class="form-group row">
@@ -31,7 +31,8 @@
                                 <label class="col-2 col-form-label text-danger
                                               text-right" for="userid">작성자</label>
                                 <input type="text" name="userid" id="userid"
-                                       class="border-danger form-control col-9" readonly>
+                                       class="border-danger form-control col-9"
+                                       readonly value="${UID}">
                             </div>
 
                             <div class="form-group row">
@@ -71,22 +72,16 @@
    									data-sitekey="6LdwIwgbAAAAADTTDIJUsgs3xT5Th88IzbYCx8Sx"></div>
    								<input type="hidden" id="g-recaptcha" name="g-recaptcha" />
                             </div>
-                            <div class="form-group row">
-                            <input type="text" name="auto" id="auto"
-                                       class="border-danger form-control col-3 offset-2"> &nbsp;&nbsp;
-                                <button type="button" class="btn btn-dark">
-                                <i class="fas fa-question-circle"></i>
-                                다른 capcha보기</button>
-                            </div>
+
 
 
                          <div class="form-group row">
                              <hr class="col-10">
                             <div class="col-12 text-center">
                             <button type="button" class="btn btn-primary"
-                                    id="joinbtn"><i class="fas fa-check"></i>입력완료</button>
-                            <button type="button" class="btn btn-danger"
-                                    id="cancelbtn"><i class="fas fa-times"></i>취소하기</button>
+                                    id="newpds"><i class="fas fa-check"></i>입력완료</button>
+                            <button type="reset" class="btn btn-danger"
+                                    id="cancelbtn"><i class="fas fa-times"></i>다시입력</button>
                          </div>
                         </div> <!-- 버튼들 -->
                     </form>
