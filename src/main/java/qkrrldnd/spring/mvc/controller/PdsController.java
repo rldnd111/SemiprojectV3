@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import qkrrldnd.spring.mvc.service.PdsService;
 import qkrrldnd.spring.mvc.utils.FileUpDownUtil;
 import qkrrldnd.spring.mvc.vo.Pds;
@@ -18,13 +19,20 @@ public class PdsController {
     @Autowired private PdsService psrv;
 
     @GetMapping("/pds/list")
-    public String list() {
-        return "pds/list.tiles";
+    public ModelAndView list(ModelAndView mv, String cp) {
+        if (cp == null || cp.equals("")) cp= "1";
+        mv.setViewName("pds/list.tiles");
+        mv.addObject("pds",psrv.readPds(cp));
+        mv.addObject("pcnt",psrv.countPds());
+
+        return mv;
     }
 
-    @GetMapping("/pds/view")
-    public String view() {
-        return "pds/view.tiles";
+    @GetMapping("/pds/view") // 본문글 출력
+    public ModelAndView view(ModelAndView mv, String pno) {
+        mv.setViewName("pds/view.tiles");
+        mv.addObject("p",psrv.readOnePds(pno));
+        return mv;
     }
 
     @GetMapping("/pds/write")
@@ -59,7 +67,7 @@ public class PdsController {
 
         psrv.newPds(p, file);
 
-        return "redirect:/pds/list";
+        return "redirect:/pds/list?cp=1";
     }
     
 }

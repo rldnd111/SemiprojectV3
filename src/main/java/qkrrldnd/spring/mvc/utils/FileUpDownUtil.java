@@ -6,12 +6,15 @@ import org.apache.commons.fileupload.RequestContext;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.servlet.ServletRequestContext;
+import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+@Component("fud")
 public class FileUpDownUtil {
 
     // 자바 웹 프로그래밍 파일업로드 지원
@@ -23,7 +26,7 @@ public class FileUpDownUtil {
     // 파일 업로드 경로 지정
     private String uploadPath = "c:/Java/pdsupload/";
 
-    // 업로드 메서드
+    // 업로드 메서드1 : commons file upload
     public Map<String, String> procUpload(HttpServletRequest req) {
 
         Map<String, String> frmdata = new HashMap<>();
@@ -122,4 +125,34 @@ public class FileUpDownUtil {
 
 
     }
+
+    // 업로드 처리 메서드2 : MultipartFile
+    public  String procUpload(MultipartFile mf, String uuid){
+        String ofname = mf.getOriginalFilename(); // 원 파일명 가져옴
+
+        // abc.txt : fname[1] => txt
+        // abc.123.xyz.txt : fname[3] => txt
+        int pos = ofname.lastIndexOf(".");
+        String ftype = ofname.substring(pos + 1); // 확장자 추출
+        String fname = ofname.substring(0, pos); // 파일명 추출
+
+        String nfname = fname + uuid + "." + ftype; // 새로운 파일명 생성
+        
+        try {
+            mf.transferTo(new File(uploadPath+nfname));
+            // 지정한 위치에 파일 저장
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return ofname + "/" + (mf.getSize() / 1024) + "/" + ftype;
+    }
+
+    // 겹치치 않는 파일명을 위해 유니크한 임의의 값 생성
+    public String makeUUID() {
+        String fmt = "yyyyMMddHHmmss";
+        SimpleDateFormat sdf = new SimpleDateFormat(fmt);
+
+        return sdf.format(new Date());
+    }
+
 }

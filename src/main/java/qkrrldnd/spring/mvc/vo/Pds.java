@@ -2,7 +2,7 @@ package qkrrldnd.spring.mvc.vo;
 
 public class Pds {
 
-    protected String bdno;
+    protected String pno;
     protected String title;
     protected String userid;
     protected String regdate;
@@ -26,12 +26,12 @@ public class Pds {
     protected String fdown3;
     protected String uuid;
 
-    public String getBdno() {
-        return bdno;
+    public String getpno() {
+        return pno;
     }
 
-    public void setBdno(String bdno) {
-        this.bdno = bdno;
+    public void setpno(String pno) {
+        this.pno = pno;
     }
 
     public String getTitle() {

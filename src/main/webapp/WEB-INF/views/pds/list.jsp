@@ -1,7 +1,9 @@
 <%@ page pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 
 	<div id="main">
-                <div id="main">
                 <div>
                     <i class="fas fa-save fa-2x">자료실</i>
                     <hr>
@@ -54,126 +56,16 @@
                                 </tr>
 
 
+                                <c:forEach var="p" items="${pds}">
                                 <tr>
-                                    <td>1</td>
-                                    <td><a href="view.html">dolor sit amet, consectetur Lorem ipsum dolor sit amet</a></td>
-                                    <td>zzyzzy</td>
-                                    <td>2021.03.15</td>
-                                    <td>15</td>
-                                    <td>315</td>
+                                    <td>${p.pno}</td>
+                                    <td><a href="/pds/view?pno=${p.pno}">${p.title}</a></td>
+                                    <td>${p.userid}</td>
+                                    <td>${fn:substring(p.regdate,0,10)}</td>
+                                    <td>${p.thumbup}</td>
+                                    <td>${p.views}</td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>dolor sit amet, consectetur Lorem ipsum dolor sit amet</td>
-                                    <td>zzyzzy</td>
-                                    <td>2021.03.15</td>
-                                    <td>15</td>
-                                    <td>315</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>dolor sit amet, consectetur Lorem ipsum dolor sit amet</td>
-                                    <td>zzyzzy</td>
-                                    <td>2021.03.15</td>
-                                    <td>15</td>
-                                    <td>315</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>dolor sit amet, consectetur Lorem ipsum dolor sit amet</td>
-                                    <td>zzyzzy</td>
-                                    <td>2021.03.15</td>
-                                    <td>15</td>
-                                    <td>315</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>dolor sit amet, consectetur Lorem ipsum dolor sit amet</td>
-                                    <td>zzyzzy</td>
-                                    <td>2021.03.15</td>
-                                    <td>15</td>
-                                    <td>315</td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>dolor sit amet, consectetur Lorem ipsum dolor sit amet</td>
-                                    <td>zzyzzy</td>
-                                    <td>2021.03.15</td>
-                                    <td>15</td>
-                                    <td>315</td>
-                                </tr>
-                                <tr>
-                                    <td>7</td>
-                                    <td>dolor sit amet, consectetur Lorem ipsum dolor sit amet</td>
-                                    <td>zzyzzy</td>
-                                    <td>2021.03.15</td>
-                                    <td>15</td>
-                                    <td>315</td>
-                                </tr>
-                                <tr>
-                                    <td>8</td>
-                                    <td>dolor sit amet, consectetur Lorem ipsum dolor sit amet</td>
-                                    <td>zzyzzy</td>
-                                    <td>2021.03.15</td>
-                                    <td>15</td>
-                                    <td>315</td>
-                                </tr>
-                                <tr>
-                                    <td>9</td>
-                                    <td>dolor sit amet, consectetur Lorem ipsum dolor sit amet</td>
-                                    <td>zzyzzy</td>
-                                    <td>2021.03.15</td>
-                                    <td>15</td>
-                                    <td>315</td>
-                                </tr>
-                                <tr>
-                                    <td>10</td>
-                                    <td>dolor sit amet, consectetur Lorem ipsum dolor sit amet</td>
-                                    <td>zzyzzy</td>
-                                    <td>2021.03.15</td>
-                                    <td>15</td>
-                                    <td>315</td>
-                                </tr>
-                                <tr>
-                                    <td>11</td>
-                                    <td>dolor sit amet, consectetur Lorem ipsum dolor sit amet</td>
-                                    <td>zzyzzy</td>
-                                    <td>2021.03.15</td>
-                                    <td>15</td>
-                                    <td>315</td>
-                                </tr>
-                                <tr>
-                                    <td>12</td>
-                                    <td>dolor sit amet, consectetur Lorem ipsum dolor sit amet</td>
-                                    <td>zzyzzy</td>
-                                    <td>2021.03.15</td>
-                                    <td>15</td>
-                                    <td>315</td>
-                                </tr>
-                                <tr>
-                                    <td>13</td>
-                                    <td>dolor sit amet, consectetur Lorem ipsum dolor sit amet</td>
-                                    <td>zzyzzy</td>
-                                    <td>2021.03.15</td>
-                                    <td>15</td>
-                                    <td>315</td>
-                                </tr>
-                                <tr>
-                                    <td>14</td>
-                                    <td>dolor sit amet, consectetur Lorem ipsum dolor sit amet</td>
-                                    <td>zzyzzy</td>
-                                    <td>2021.03.15</td>
-                                    <td>15</td>
-                                    <td>315</td>
-                                </tr>
-                                <tr>
-                                    <td>15</td>
-                                    <td>dolor sit amet, consectetur Lorem ipsum dolor sit amet</td>
-                                    <td>zzyzzy</td>
-                                    <td>2021.03.15</td>
-                                    <td>15</td>
-                                    <td>315</td>
-                                </tr>
+                                </c:forEach>
 
                             </tbody>
                         </table>
@@ -203,8 +95,6 @@
 
                     </div> <!-- 페이지 네이션 -->
 
-
-            </div>
            </div>
            
      <script>
