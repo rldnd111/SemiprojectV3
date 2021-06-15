@@ -104,13 +104,13 @@ public class PdsController {
 
         return "redirect:/pds/view?pno=" + prvpno;
     
-    // 다음글 보여주기
-    
-}
 
+
+}
+    // 다음글 보여주기
     @GetMapping ("/pds/next")
     public String pdsnext(String pno) {
-        String nxtpno = psrv.readNextpno(pno);
+        String nxtpno = psrv.readNxtpno(pno);
 
         return "redirect:/pds/view?pno=" + nxtpno;
 

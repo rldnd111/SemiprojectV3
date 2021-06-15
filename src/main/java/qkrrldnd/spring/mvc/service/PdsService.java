@@ -21,7 +21,7 @@ public interface PdsService {
 
     String readPrvpno(String pno);
 
-    String readNextpno(String pno);
+    String readNxtpno(String pno);
 
     Pds removePds(String pno);
 }

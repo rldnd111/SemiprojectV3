@@ -114,7 +114,7 @@ public class PdsServiceImpl implements PdsService{
     }
 
     @Override
-    public String readNextpno(String pno) {
+    public String readNxtpno(String pno) {
         return pdao.selectNxtpno(pno);
     }
 
