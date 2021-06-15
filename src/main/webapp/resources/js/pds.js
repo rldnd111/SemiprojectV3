@@ -31,7 +31,7 @@ $('#pdprvbtn').on('click', function () {
 });
 
 // nextbtn
-$('#pdnxtbtn').on('clcik', function () {
+$('#pdnxtbtn').on('click', function () {
     location.href='/pds/next?pno=' + $('#pno').val();
 });
 
