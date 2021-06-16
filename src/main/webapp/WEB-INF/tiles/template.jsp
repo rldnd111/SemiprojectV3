@@ -14,6 +14,7 @@
 
       <!-- user define CSS -->
      <link rel="stylesheet" href="/css/board.css">
+     <link rel="stylesheet" href="/css/gallery.css">
 
       <!--font awesome-->
       <script src="https://kit.fontawesome.com/9f355325f4.js" crossorigin="anonymous"></script>
@@ -90,6 +91,7 @@
     <script src="/js/join.js"></script>
     <script src="/js/board.js"></script>
     <script src="/js/pds.js"></script>
+    <script src="/js/gallery.js"></script>
         <script>
         // findtype select tag
          $('#findtype').val('${param.findtype}')
